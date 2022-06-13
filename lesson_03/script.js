@@ -37,11 +37,65 @@ function arr3Sum() {
 }
 console.log(arr3Sum());
 
+
 exercise(3, 4);
+
+//Способ №1
+
+// let obj = {
+//    name: "Roman",
+//    age: undefined,
+// }
+// let key = prompt("Enter the key:");
+// let value = prompt("Enter the value:");
+
 // function addNewProperty(key, value, object) {
-//    const key = prompt("Enter the key");
-//    const value = prompt("Enter the value");
-// };
+//    if (object[key] === undefined) {
+//       object[key] = value;
+//       } else {
+//       console.error("This property is already in use.");
+//    };
+// }
+
+// addNewProperty(key, value, obj);
+// console.log(obj);
+
+//Способ №2
+
+let obj2 = {
+   name: "Alisa",
+   num: 555,
+   age: undefined,
+   height: undefined,
+};
+
+let key = prompt("Enter the key:");
+let value = prompt("Enter the value:");
+
+function addNewProperty(key, value, obj) {
+   let objPropertyNames = Object.getOwnPropertyNames(obj);
+   let objValues = Object.values(obj);
+   function isUndefined(el, i, array) {
+      for (i = 0; i < array.length; i++) {
+         if (el !== undefined) {
+            return false;
+         };
+      };
+      return true;
+   };
+   let indexOfUndefined = objValues.findIndex(isUndefined);
+   let nameOfUndefinedProperty = objPropertyNames[indexOfUndefined];
+   if (key === nameOfUndefinedProperty) {
+      console.error("This property is already in use. Its value is 'undefined'");
+   } else if (obj[key] === undefined) {
+      obj[key] = value;
+   } else {
+      console.error("This property is already in use.");
+   };
+}
+addNewProperty(key, value, obj2);
+console.log(obj2);
+
 
 exercise(3, 5);
 for (let i = 1; i < 11; i++) {
