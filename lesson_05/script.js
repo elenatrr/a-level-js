@@ -5,18 +5,19 @@ function exercise(homeworkNum, exerciseNum) {
 //Homework#4
 exercise(5, 1);
 
-function getUnique(arr) {
-   let uniqueArr = [];
-   for (let el of arr) {
-      if (!uniqueArr.includes(el)) {
-         uniqueArr.push(el);
+Array.prototype.getUnique = function() {
+      let uniqueArr = [];
+      for (let el of this) {
+         if (!uniqueArr.includes(el)) {
+            uniqueArr.push(el);
+         };
       };
-   };
-   return uniqueArr;
+      return uniqueArr;
 }
+   
 
 const arr = [1, 1, 2, 2, 3];
-console.log(getUnique(arr));
+console.log(arr.getUnique());
 
 exercise(5, 2);
 
@@ -28,29 +29,31 @@ const someObj = {
    e: 0,
 }
 
-function getKeySum(obj) {
-   let objValues = Object.values(obj);
+Object.prototype.getKeySum = function() {
+   let objValues = Object.values(this);
    let filteredValues = objValues.filter((el => el !== false));
    let sum = 0;
    for (i = 0; i < filteredValues.length; i++) {
       sum += filteredValues[i];
    }
-   return sum;
-}
-console.log(getKeySum(someObj));
+   console.log(sum);
+};
 
-function reversKey(obj) {
+someObj.getKeySum();
+
+Object.prototype.reversKey = function() {
    let newObj = {};
-   let objKeys = Object.keys(obj);
-   let objValues = Object.values(obj);
+   let objKeys = Object.keys(this);
+   let objValues = Object.values(this);
    for (i = 0; i < objValues.length; i++){
       newObj[objValues[i]] = objKeys[i];
    }
    return newObj;
 }
-console.log(reversKey(someObj));
+console.log(someObj.reversKey());
 
 exercise(5, 3);
+
 const holder = document.createElement('div');
 holder.className = 'holder';
 holder.style.display = "flex";
